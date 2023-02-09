@@ -24,6 +24,7 @@ const Wrap = styled.div`
   padding-right: 14px;
   box-sizing: border-box;
   border-bottom: 1px solid #f4f4f4;
+  display: flex;
 `;
 
 const HeaderLogoWrap = styled.div`

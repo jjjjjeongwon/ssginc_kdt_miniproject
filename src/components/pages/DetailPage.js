@@ -1,7 +1,7 @@
 import React from 'react';
 
-const DetailPAge = () => {
-  return <div>DetailPAge</div>;
+const DetailPage = () => {
+  return <div>DetailPage</div>;
 };
 
-export default DetailPAge;
+export default DetailPage;
