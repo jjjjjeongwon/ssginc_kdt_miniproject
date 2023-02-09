@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BsCartPlusFill } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <Wrap>
       <HeaderLogoWrap>
-        <LogoImage href="/">
+        <LogoImage onClick={() => navigate('/')}>
           <img src={'/images/logo.png'} alt="" />
         </LogoImage>
       </HeaderLogoWrap>
-      <CartImage>
+      <CartImage onClick={() => navigate('/cart')}>
         <BsCartPlusFill size={24} color="#f9bb00" />
       </CartImage>
     </Wrap>
@@ -18,9 +20,6 @@ const Header = () => {
 };
 
 const Wrap = styled.div`
-  /* max-width: 704px;
-  margin: 0 auto 0;
-  width: 100%; */
   padding-left: 14px;
   padding-right: 14px;
   box-sizing: border-box;
