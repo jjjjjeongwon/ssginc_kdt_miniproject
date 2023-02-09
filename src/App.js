@@ -5,6 +5,8 @@ import { Route, Routes } from 'react-router-dom';
 import DetailPage from './components/pages/DetailPage';
 import Cart from './components/pages/Cart';
 import styled from 'styled-components';
+import Login from './components/pages/Login';
+import Signup from './components/pages/Signup';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/detail" element={<DetailPage />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
