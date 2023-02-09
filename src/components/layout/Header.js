@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { BsCartPlusFill } from 'react-icons/bs';
 
 const Header = () => {
   return (
@@ -10,7 +11,7 @@ const Header = () => {
         </LogoImage>
       </HeaderLogoWrap>
       <CartImage>
-        <img src={''} alt="" />
+        <BsCartPlusFill size={24} color="#f9bb00" />
       </CartImage>
     </Wrap>
   );
@@ -28,7 +29,7 @@ const Wrap = styled.div`
 `;
 
 const HeaderLogoWrap = styled.div`
-  height: 90px;
+  height: 80px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -49,12 +50,9 @@ const LogoImage = styled.div`
 `;
 
 const CartImage = styled.div`
+  margin-top: 38px;
   width: 24px;
   height: 24px;
-  img {
-    width: 100%;
-    height: 100%;
-  }
 `;
 
 export default Header;
