@@ -7,11 +7,13 @@ import Cart from './components/pages/Cart';
 import styled from 'styled-components';
 import Login from './components/pages/Login';
 import Signup from './components/pages/Signup';
+import CartButton from './components/layout/CartButton';
 
 function App() {
   return (
     <Container>
       <Header />
+      <CartButton />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />

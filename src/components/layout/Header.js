@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BsCartPlusFill } from 'react-icons/bs';
+import { FaUserAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
@@ -12,8 +12,8 @@ const Header = () => {
           <img src={'/images/logo.png'} alt="" />
         </LogoImage>
       </HeaderLogoWrap>
-      <CartImage onClick={() => navigate('/cart')}>
-        <BsCartPlusFill size={24} color="#f9bb00" />
+      <CartImage onClick={() => navigate('/login')}>
+        <FaUserAlt size={22} color="#f9bb00" />
       </CartImage>
     </Wrap>
   );
