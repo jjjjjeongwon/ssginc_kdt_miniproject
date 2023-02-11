@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaUserAlt } from 'react-icons/fa';
+import { BiLogOut } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
@@ -12,9 +13,12 @@ const Header = () => {
           <img src={'/images/logo.png'} alt="" />
         </LogoImage>
       </HeaderLogoWrap>
-      <CartImage onClick={() => navigate('/login')}>
+      {/* <IconImage onClick={() => navigate('/login')}>
+        <BiLogOut size={25} color="#f9bb00" />
+      </IconImage> */}
+      <IconImage onClick={() => navigate('/login')}>
         <FaUserAlt size={22} color="#f9bb00" />
-      </CartImage>
+      </IconImage>
     </Wrap>
   );
 };
@@ -40,16 +44,16 @@ const HeaderLogoWrap = styled.div`
 
 const LogoImage = styled.div`
   max-width: 98px;
-  max-height: 18px;
+  max-height: 20px;
   width: 98px;
-  height: 18px;
+  height: 20px;
   img {
     width: 100%;
     height: 100%;
   }
 `;
 
-const CartImage = styled.div`
+const IconImage = styled.div`
   margin-top: 38px;
   width: 24px;
   height: 24px;
