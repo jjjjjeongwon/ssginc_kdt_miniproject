@@ -1,21 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaUserAlt } from 'react-icons/fa';
-import { BiLogOut } from 'react-icons/bi';
+import { BiArrowBack } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
   return (
     <Wrap>
+      <IconImage onClick={() => navigate(-1)}>
+        <BiArrowBack size={25} color="#f9bb00" />
+      </IconImage>
       <HeaderLogoWrap>
         <LogoImage onClick={() => navigate('/')}>
           <img src={'/images/logo.png'} alt="" />
         </LogoImage>
       </HeaderLogoWrap>
-      {/* <IconImage onClick={() => navigate('/login')}>
-        <BiLogOut size={25} color="#f9bb00" />
-      </IconImage> */}
+
       <IconImage onClick={() => navigate('/login')}>
         <FaUserAlt size={22} color="#f9bb00" />
       </IconImage>
@@ -57,6 +58,7 @@ const IconImage = styled.div`
   margin-top: 38px;
   width: 24px;
   height: 24px;
+  cursor: pointer;
 `;
 
 export default Header;
