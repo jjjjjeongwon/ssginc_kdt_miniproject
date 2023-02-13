@@ -10,7 +10,7 @@ const Login = () => {
 
       <LoginWrap>
         <InputBox>
-          <Text>아이디</Text>
+          <Text>아이디(이메일)</Text>
           <Id type="text" />
         </InputBox>
         <InputBox>

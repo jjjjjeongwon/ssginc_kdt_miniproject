@@ -108,7 +108,7 @@
       "description": "미에슈코_에스프레소_프랄린 153g, 폴란드 (제조국 : 폴란드)",
       "category": "초콜릿가공품",
       "brand": "(주)천하코퍼레이션",
-      "rating": 5.0
+      "rating": 5
     }
   ],
   "events": [
@@ -157,6 +157,18 @@
       "name": "안영진",
       "email": "beat1103@gmail.com",
       "password": "1234"
+    },
+    {
+      "name": "정언",
+      "email": "123@naver.com",
+      "password": "1231231",
+      "id": 3
+    },
+    {
+      "name": "이름",
+      "email": "123@naver.com",
+      "password": "111",
+      "id": 4
     }
   ]
 }

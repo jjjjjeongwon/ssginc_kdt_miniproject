@@ -1,40 +1,73 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import userAPI from '../../apis/userAPI';
 
 const Signup = () => {
   const navigate = useNavigate();
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordCheckRef = useRef();
+
+  const handleSignupData = () => {
+    const SignupData = {
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+
+    if (passwordRef.current.value !== passwordCheckRef.current.value) {
+      return window.alert('비밀번호가 일치하지 않습니다!');
+    }
+
+    console.log(SignupData);
+    submitSignupData(SignupData);
+  };
+
+  const submitSignupData = async (SignupData) => {
+    await userAPI
+      .post('http://localhost:3002/users', SignupData)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log('오류', err);
+      });
+  };
+
   return (
     <Wrap>
       <Title>회원가입</Title>
 
       <LoginWrap>
         <InputBox>
-          <Text>아이디</Text>
-          <Id type="text" />
+          <Text>이름</Text>
+          <Id type="text" ref={nameRef} />
         </InputBox>
         <InputBox>
           <Text>이메일</Text>
-          <Id type="text" />
+          <Id type="text" ref={emailRef} />
         </InputBox>
         <InputBox>
           <Text>비밀번호</Text>
-          <Id type="password" />
+          <Id type="password" ref={passwordRef} />
         </InputBox>
         <InputBox>
           <Text>비밀번호 확인</Text>
-          <Id type="password" /> <br />
+          <Id type="password" ref={passwordCheckRef} /> <br />
           <br />
         </InputBox>
 
         <ButtonContainer>
           <Button
-            onClick={() => {
-              window.alert(
-                '회원가입에 성공하였습니다!\n로그인 페이지로 이동합니다'
-              );
-              navigate('/login');
-            }}
+            onClick={
+              handleSignupData
+              // window.alert(
+              //   '회원가입에 성공하였습니다!\n로그인 페이지로 이동합니다'
+              // );
+              // navigate('/login');
+            }
           >
             회원가입하기
           </Button>
