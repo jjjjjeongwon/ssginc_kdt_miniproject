@@ -1,13 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import { SelectProductState, CartProductState } from '../../../state/Atom';
+import { SelectProductState } from '../../../state/Atom';
 import styled from 'styled-components';
 
 const ProductCard = ({ list }) => {
   const navigate = useNavigate();
   const setSelectProduct = useSetRecoilState(SelectProductState);
-  const setCartProduct = useSetRecoilState(CartProductState);
+  // const setCartProduct = useSetRecoilState(CartProductState);
   let cartList = [];
 
   const handleProductDetail = () => {
@@ -26,7 +26,6 @@ const ProductCard = ({ list }) => {
     };
     console.log(sessionStorage.getItem('cart'));
 
-    setCartProduct(cart);
     // cartList.push(list.id);
     // console.log(cartList);
 

@@ -2,28 +2,36 @@ import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import userAPI from '../../apis/userAPI';
+import { useSetRecoilState } from 'recoil';
+import { LoginState } from '../../state/Atom';
 
 const Login = () => {
   const navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const handleLoginData = () => {
-    const LoginData = {
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
-    };
-
-    console.log(LoginData);
-  };
+  const setIsLogin = useSetRecoilState(LoginState);
 
   const handleLogin = async () => {
     await userAPI
       .get('http://localhost:3002/users')
       .then((res) => {
         console.log(res.data);
+        if (
+          res.data.some(
+            (product) =>
+              product.email === emailRef.current.value &&
+              product.password === passwordRef.current.value
+          )
+        ) {
+          window.alert('로그인 되었습니다!');
+          setIsLogin(true);
+          return navigate('/');
+        }
+        throw new Error();
       })
       .catch((err) => {
+        window.alert('아이디, 비밀번호를 다시 확인해주세요');
         console.log('오류', err);
       });
   };
