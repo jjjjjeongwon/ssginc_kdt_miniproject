@@ -20,16 +20,21 @@ const ProductCard = ({ list }) => {
     window.alert('장바구니 담기 성공!');
     let cart = {
       id: list.id,
-      // name: list.name,
-      // brand: list.brand,
+      name: list.name,
+      brand: list.brand,
       price: list.price,
+      image: list.thumbnail,
+      qty: 1,
     };
-    console.log(sessionStorage.getItem('cart'));
 
-    // cartList.push(list.id);
-    // console.log(cartList);
+    const cartArr = JSON.parse(sessionStorage.getItem('cart'));
 
-    // sessionStorage.setItem('cart', [{ id: list.id }]);
+    const addCart = cartArr ? [...cartArr, cart] : [cart];
+
+    console.log(cartArr);
+
+    sessionStorage.setItem('cart', JSON.stringify(addCart));
+
     e.stopPropagation();
   };
 

@@ -1,34 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 
 const Cart = () => {
+  const [cartArr, setCartArr] = useState();
+
+  useEffect(() => {
+    setCartArr(JSON.parse(sessionStorage.getItem('cart')));
+  }, []);
+
+  // const removeItem = (id) => {
+  //   sessionStorage.getItem('cart')
+  // };
+
+  let total = 0;
+
+  cartArr &&
+    cartArr.map((cart) => {
+      total += cart.price;
+    });
+
   return (
     <Container>
-      <CardWrap>
-        <Menu>
-          <ImageWrap>
-            <img
-              src="https://sitem.ssgcdn.com/59/56/18/item/1000530185659_i1_1100.jpg"
-              alt=""
-            />
-          </ImageWrap>
-          <Wrap>
-            <Delete>X</Delete>
-            <CompanyName>네슬레코리아 (제조국 : 아랍에미리트)</CompanyName>
-            <ProductName>킷캣 오리지널 18입</ProductName>
-            <CountWrap></CountWrap>
-          </Wrap>
-        </Menu>
-        <PriceWrap>
-          <PriceTitle>상품금액</PriceTitle>
-          <Price>14900원</Price>
-        </PriceWrap>
-      </CardWrap>
+      {cartArr &&
+        cartArr.map((cart, idx) => (
+          <CardWrap>
+            <Menu>
+              <ImageWrap>
+                <img src={cart.image} alt="" />
+              </ImageWrap>
+              <Wrap>
+                <Delete>X</Delete>
+                <CompanyName>{cart.brand}</CompanyName>
+                <ProductName>{cart.name}</ProductName>
+                <CountWrap></CountWrap>
+              </Wrap>
+            </Menu>
+            <PriceWrap>
+              <PriceTitle>상품금액</PriceTitle>
+              <Price>{cart.price}원</Price>
+            </PriceWrap>
+          </CardWrap>
+        ))}
 
       <PaymentWrap>
         <PriceTitle>결제 예상 금액</PriceTitle>
-        <FinalPrice>14900원</FinalPrice>
+        <FinalPrice>{total}원</FinalPrice>
       </PaymentWrap>
     </Container>
   );
