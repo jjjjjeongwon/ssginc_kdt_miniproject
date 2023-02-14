@@ -30,6 +30,8 @@ const Signup = () => {
       .post('http://localhost:3002/users', SignupData)
       .then((res) => {
         console.log(res.data);
+        window.alert('회원가입 성공!');
+        navigate('/login');
       })
       .catch((err) => {
         console.log('오류', err);

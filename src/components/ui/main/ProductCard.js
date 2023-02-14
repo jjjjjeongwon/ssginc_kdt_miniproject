@@ -1,12 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import { SelectProductState } from '../../../state/Atom';
+import { SelectProductState, CartProductState } from '../../../state/Atom';
 import styled from 'styled-components';
 
-const ProductCard = ({ list, thumbnail, name, price }) => {
+const ProductCard = ({ list }) => {
   const navigate = useNavigate();
   const setSelectProduct = useSetRecoilState(SelectProductState);
+  const setCartProduct = useSetRecoilState(CartProductState);
+  let cartList = [];
 
   const handleProductDetail = () => {
     setSelectProduct(list);
@@ -14,21 +16,33 @@ const ProductCard = ({ list, thumbnail, name, price }) => {
   };
 
   const addCart = (e) => {
+    // console.log(list);
     window.alert('장바구니 담기 성공!');
-    // let cart = list.id
-    // sessionStorage.setItem('basket',)
+    let cart = {
+      id: list.id,
+      // name: list.name,
+      // brand: list.brand,
+      price: list.price,
+    };
+    console.log(sessionStorage.getItem('cart'));
+
+    setCartProduct(cart);
+    // cartList.push(list.id);
+    // console.log(cartList);
+
+    // sessionStorage.setItem('cart', [{ id: list.id }]);
     e.stopPropagation();
   };
 
   return (
     <Menu onClick={handleProductDetail}>
       <ImageWrap>
-        <img src={thumbnail} alt="" />
+        <img src={list.thumbnail} alt="" />
       </ImageWrap>
       <MenuNameWrap>
-        <MenuName>{name}</MenuName>
+        <MenuName>{list.name}</MenuName>
       </MenuNameWrap>
-      <Price>{price}원</Price>
+      <Price>{list.price}원</Price>
       <AddBtn onClick={addCart}>담기</AddBtn>
     </Menu>
   );

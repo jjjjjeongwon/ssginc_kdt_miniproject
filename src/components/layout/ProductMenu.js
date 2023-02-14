@@ -27,15 +27,7 @@ const ProductMenu = () => {
   return (
     <Container>
       {productList &&
-        productList.map((list) => (
-          <ProductCard
-            key={list.id}
-            list={list}
-            thumbnail={list.thumbnail}
-            name={list.name}
-            price={list.price}
-          />
-        ))}
+        productList.map((list) => <ProductCard key={list.id} list={list} />)}
     </Container>
   );
 };

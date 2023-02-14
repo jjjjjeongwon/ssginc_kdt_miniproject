@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import userAPI from '../../apis/userAPI';
 
 const Login = () => {
   const navigate = useNavigate();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const handleLoginData = () => {
+    const LoginData = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+
+    console.log(LoginData);
+  };
+
+  const handleLogin = async () => {
+    await userAPI
+      .get('http://localhost:3002/users')
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log('오류', err);
+      });
+  };
   return (
     <Wrap>
       <Title>로그인</Title>
@@ -11,15 +34,15 @@ const Login = () => {
       <LoginWrap>
         <InputBox>
           <Text>아이디(이메일)</Text>
-          <Id type="text" />
+          <Id type="text" ref={emailRef} />
         </InputBox>
         <InputBox>
           <Text>비밀번호</Text>
-          <Id type="password" /> <br />
+          <Id type="password" ref={passwordRef} /> <br />
           <br />
         </InputBox>
         <ButtonContainer>
-          <Button>로그인하기</Button>
+          <Button onClick={handleLogin}>로그인하기</Button>
           <SignupButton onClick={() => navigate('/signup')}>
             아직 회원이 아니신가요?
           </SignupButton>

@@ -169,6 +169,12 @@
       "email": "123@naver.com",
       "password": "111",
       "id": 4
+    },
+    {
+      "name": "아룸",
+      "email": "22@gmail.com",
+      "password": "333",
+      "id": 5
     }
   ]
 }
