@@ -3,9 +3,13 @@ import styled from 'styled-components';
 import { FaUserAlt } from 'react-icons/fa';
 import { BiArrowBack } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { LoginState } from '../../state/Atom';
 
 const Header = () => {
+  const isLogin = useRecoilValue(LoginState);
   const navigate = useNavigate();
+  console.log(isLogin);
   return (
     <Wrap>
       <IconImage onClick={() => navigate(-1)}>

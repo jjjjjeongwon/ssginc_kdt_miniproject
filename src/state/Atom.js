@@ -6,10 +6,12 @@ import { recoilPersist } from 'recoil-persist';
 //   storage: sessionStorage,
 // });
 
-const { persistAtom } = recoilPersist({
-  key: 'isLogin',
-  storage: sessionStorage,
-});
+// const { persistAtom } = recoilPersist({
+//   key: 'isLogin',
+//   storage: sessionStorage,
+// });
+
+const { persistAtom } = recoilPersist();
 
 export const ProductsState = atom({
   key: 'ProductsState',
